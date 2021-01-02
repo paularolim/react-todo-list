@@ -1,0 +1,54 @@
+.home {
+    background-color: #9bcbe4;
+    min-height: 100vh;
+}
+
+.home main {
+    padding: 20px 4%;
+}
+
+.modal-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+
+.modal-wrapper .menu {
+    background-color: #E0E2EE;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 100px;
+    right: 4%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.modal-wrapper .menu li {
+    line-height: 20px;
+    list-style-type: none;
+    margin: 10px 0;
+    display: flex;
+    cursor: pointer;
+}
+
+.modal-wrapper .menu li span {
+    margin-left: 8px;
+}
+
+.modal-wrapper button {
+    width: 55px;
+    height: 55px;
+    background-color: #484B5D;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 35px;
+    right: 4%;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+}

@@ -1,0 +1,109 @@
+.index-layout {
+    background-color: #9bcbe4;
+    width: 100%;
+    height: 100vh;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.index-layout .presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.index-layout .logo {
+    max-width: 250px;
+    width: 55%;
+    margin-bottom: 30px;
+}
+.index-layout .phrase {
+    display: none;
+}
+
+.index-layout .icon {
+    color: #484b5d;
+    width: 25px;
+}
+
+.index-layout .form-container {
+    background-color: #484b5d;
+    width: 100%;
+    padding: 5%;
+}
+
+.index-layout .hide {
+    display: none;
+    transition: all 0.3s linear;
+}
+
+.index-layout .form-container h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #9BCBE4;
+}
+
+.index-layout .form-container .input {
+    display: flex;
+    flex-direction: column;
+}
+
+.index-layout .form-container label {
+    color: #9BCBE4;
+}
+
+.index-layout .form-container input {
+    padding: .5rem .8em;
+    border-radius: 50px;
+    outline: none;
+}
+
+.index-layout .form-container button {
+    background-color: #9BCBE4;
+    width: 100%;
+    margin: 20px 0; 
+    padding: 0.8rem;
+    border-radius: 50px;
+    outline: none;
+}
+
+.index-layout .form-container p {
+    color: #8A8A8A;
+    font-size: 12px;
+    text-align: center;
+}
+
+.index-layout .form-container a {
+    display: block;
+    color: #9BCBE4;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+    .index-layout {
+        padding: 0;
+        flex-direction: row;
+    }
+    .index-layout .presentation {
+        flex: 1;
+    }
+    .index-layout .phrase {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+    .index-layout .form-container {
+        width: 50%;
+        max-width: 576px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

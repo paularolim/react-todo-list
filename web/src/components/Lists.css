@@ -1,0 +1,36 @@
+.lists {
+    padding: 15px 4%;
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.lists::-webkit-scrollbar {
+    height: 6px;
+}
+
+.lists::-webkit-scrollbar-track {
+    background: #E0E2EE;
+}
+
+.lists::-webkit-scrollbar-thumb {
+    background: #484b5d;
+}
+
+.lists::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.list-item {
+    background-color: #484b5d;
+    margin-right: 15px;
+    padding: 5px 45px;
+    border-radius: 20px;
+    white-space: nowrap;
+    color: #e0e2ee;
+    list-style: none;
+}
+
+.list-item:not(:first-child) {
+    opacity: .75;
+}
