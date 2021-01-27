@@ -1,24 +1,48 @@
 import React from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
+import { AiOutlinePlus, AiOutlineSetting } from "react-icons/ai";
 
 import "./Group.css";
 
 const Group = (props) => {
-    const { group } = props;
-    const { tasks } = props;
+    const groups = props.groups || [];
 
-    return (
-        <div className="group">
-            <div className="title" style={{backgroundColor: group.background_color}}>
-                <h2 style={{color: group.font_color}}>{group.description}</h2>
+    return groups.map((group, index) => (
+        <div className="group" key={index}>
+            <div
+                className="title"
+                style={{ backgroundColor: groups.background_color }}
+            >
+                <h2 style={{ color: groups.font_color }}>
+                    {group.description}
+                </h2>
             </div>
+            <div className="actions">
+                <div className="actions-btn">
+                    <AiOutlinePlus fill="#e0e2ee" size={25} />
+                </div>
+                <div className="actions-btn">
+                    <AiOutlineSetting fill="#e0e2ee" size={25} />
+                </div>
+            </div>
+
             <div className="content">
-                {tasks.map((task, index) => {
+                {group.task.map((task, index) => {
                     return (
                         <div className="task" key={index}>
                             <div className="input-wrapper">
-                                <input type="checkbox" name="task" id={task.description.replace(' ', '')} checked={task.status ? 'checked' : ''} />
-                                <label htmlFor={task.description.replace(' ', '')}>{task.description}</label>
+                                <input
+                                    type="checkbox"
+                                    name="task"
+                                    id={task.description.replace(" ", "")}
+                                    checked={task.status ? "checked" : ""}
+                                    onChange={(event) => event.target.checked}
+                                />
+                                <label
+                                    htmlFor={task.description.replace(" ", "")}
+                                >
+                                    {task.description}
+                                </label>
                             </div>
 
                             <div className="icons-group">
@@ -30,7 +54,7 @@ const Group = (props) => {
                 })}
             </div>
         </div>
-    );
+    ));
 };
 
 export default Group;

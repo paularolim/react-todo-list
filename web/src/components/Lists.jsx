@@ -3,24 +3,24 @@ import React from "react";
 import "./Lists.css";
 
 const Lists = (props) => {
-    function getItems() {
-        const lists = props.lists.data || [];
+    const lists = props.lists || [];
 
-        return lists.map((list, index) => (
-            <li
-                className="list-item"
-                key={index}
-                style={{
-                    backgroundColor: `#${list.background_color}`,
-                    color: `#${list.font_color}`,
-                }}
-            >
-                {list.description}
-            </li>
-        ));
-    }
-
-    return <ul className="lists">{getItems()}</ul>;
+    return (
+        <ul className="lists">
+            {lists.map((list, index) => (
+                <li
+                    className="list-item"
+                    key={index}
+                    style={{
+                        backgroundColor: `#${list.background_color}`,
+                        color: `#${list.font_color}`,
+                    }}
+                >
+                    {list.description}
+                </li>
+            ))}
+        </ul>
+    );
 };
 
 export default Lists;

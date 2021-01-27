@@ -1,10 +1,11 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 import Navbar from "../components/Navbar";
 import Lists from "../components/Lists";
 import Group from "../components/Group";
-import ConfigMenu from "../components/ConfigMenu";
+import ModalMenu from "../components/ModalMenu";
+import ModalAdvancedForm from "../components/ModalAdvancedForm";
 
 import "./Home.css";
 
@@ -15,9 +16,10 @@ class Home extends Component {
         super(props);
 
         this.createGroup = this.createGroup.bind(this);
+        this.createList = this.createList.bind(this);
         this.refreshList = this.refreshList.bind(this);
 
-        this.state = { lists: [], activeList: null };
+        this.state = { user: 1, lists: [], groups: [], activeList: 1 };
     }
 
     componentDidMount() {
@@ -29,32 +31,52 @@ class Home extends Component {
         console.log("Creating group");
     }
 
-    refreshList() {
-        axios.get(`${URL}lists`).then((response) => {
+    createList() {
+        console.log("Creating list");
+    }
+
+    async refreshList() {
+        const user = this.state.user;
+
+        await axios.get(`${URL}${user}/lists`).then((response) => {
             this.setState({
                 ...this.state,
-                lists: response.data,
-                activeList: response.data.data[0].id || null
+                lists: response.data["lists"],
+                activeList: response.data["lists"][0].id,
+            });
+        });
+    }
+
+    async refreshGroups(id = this.state.activeList) {
+        await axios.get(`${URL}${id}/tasks`).then((response) => {
+            this.setState({
+                ...this.state,
+                groups: response.data,
             });
         });
     }
 
     render() {
+        const lists = this.state.lists;
+        const groups = this.state.groups;
+
         return (
             <div className="home">
                 <Navbar />
 
-                <Lists lists={this.state.lists} />
+                <Lists lists={lists} />
 
-                {/* <main>
-                <Group group={group1} tasks={tasks} />
-                <Group group={group2} tasks={[]} />
-                <Group group={group2} tasks={[]} />
-                <Group group={group2} tasks={[]} />
-                <Group group={group2} tasks={[]} />
-            </main> */}
+                <main>
+                    <Group groups={groups} />
+                </main>
+
+                <ModalAdvancedForm />
+                
                 <div className="modal-wrapper">
-                    <ConfigMenu createGroup={this.createGroup} />
+                    <ModalMenu
+                        createGroup={this.createGroup}
+                        createList={this.createList}
+                    />
                 </div>
             </div>
         );
