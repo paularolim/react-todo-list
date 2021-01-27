@@ -15,4 +15,11 @@ class UserController extends BaseController
     {
         $this->class = User::class;
     }
+
+    public function listsFromUser($id_user)
+    {
+        $lists = User::with('lists')->find($id_user);
+
+        return response()->json($lists, 200);
+    }
 }

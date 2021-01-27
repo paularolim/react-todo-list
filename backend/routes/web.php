@@ -19,38 +19,11 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-    $router->group(['prefix' => 'users'], function () use ($router) {
-        $router->get('', 'UserController@index');
-        $router->get('{id}', 'UserController@show');
+    // lists from an user
+    // /api/id_user/lists
+    $router->get('/{id_user}/lists', 'UserController@listsFromUser');
 
-        $router->post('', 'UserController@store');
-        $router->put('{id}', 'UserController@update');
-        $router->delete('{id}', 'UserController@destroy');
-    });
-
-    $router->group(['prefix' => 'lists'], function () use ($router) {
-        $router->get('', 'ListController@index');
-        $router->get('{id}', 'ListController@show');
-
-        $router->post('', 'ListController@store');
-        $router->put('{id}', 'ListController@update');
-        $router->delete('{id}', 'ListController@destroy');
-    });
-
-    $router->group(['prefix' => 'groups'], function () use ($router) {
-        $router->get('', 'GroupController@index');
-        $router->get('{id}', 'GroupController@show');
-
-        $router->post('', 'GroupController@store');
-        $router->put('{id}', 'GroupController@update');
-        $router->delete('{id}', 'GroupController@destroy');
-    });
-
-    $router->group(['prefix' => 'tasks'], function () use ($router) {
-        $router->get('', 'TaskController@index');
-        $router->get('{id}', 'TaskController@show');
-        $router->post('', 'TaskController@store');
-        $router->put('{id}', 'TaskController@update');
-        $router->delete('{id}', 'TaskController@destroy');
-    });
+    // tasks from a list
+    // /api/id_list/tasks
+    $router->get('/{id_list}/tasks', 'GroupController@tasksFromList');
 });

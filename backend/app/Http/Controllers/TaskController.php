@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Http\Client\Request;
 
-class TaskController extends BaseController
+class TaskController
 {
     /**
      * Create a new controller instance.
@@ -14,5 +15,10 @@ class TaskController extends BaseController
     public function __construct()
     {
         $this->class = Task::class;
+    }
+
+    public function index() {
+        $tasks = Task::with('group')->get();
+        return response()->json($tasks);
     }
 }

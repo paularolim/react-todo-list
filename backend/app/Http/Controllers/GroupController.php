@@ -15,4 +15,11 @@ class GroupController extends BaseController
     {
         $this->class = Group::class;
     }
+
+    public function tasksFromList($id_list)
+    {
+        $result = Group::with('task')->where('list_id', '=', $id_list)->get();
+
+        return response()->json($result);
+    }
 }
